@@ -1,4 +1,4 @@
-// scroll reveal animation
+
 const revealElements = document.querySelectorAll("[data-reveal]");
 const scrollReveal = function(){
     for (let i = 0; i < revealElements.length; i++){
@@ -13,7 +13,6 @@ const scrollReveal = function(){
 window.addEventListener("scroll", scrollReveal);
 scrollReveal();
 
-// back to top
 const backtoTop = document.querySelector("[data-back-top]");
 window.addEventListener("scroll", function (){
     const bodyHeight = document.body.scrollHeight;
@@ -29,13 +28,12 @@ window.addEventListener("scroll", function (){
     }
 });
 
-// HEADER NAVBAR
 const ul = document.querySelector('.hex_navbar ul');
 const overlay = document.querySelector('.overlay');
 const icon = document.querySelector('.nav_toggle i');
 const items = ul.querySelectorAll('li');
 
-//close navbar function
+
 function closeNavbar(){
     items.forEach(item => {
         item.style.transform = 'translateY(-20px)';
@@ -48,7 +46,7 @@ function closeNavbar(){
     }, 500);
 }
 
-// toggle navbar
+
 document.querySelector('.nav_toggle').addEventListener('click', function(){
     if (ul.classList.contains('show')){
         closeNavbar();
@@ -63,7 +61,6 @@ document.querySelector('.nav_toggle').addEventListener('click', function(){
     }
 });
 
-//scroll to section and close navbar
 document.querySelector('.hex_navbar').addEventListener('click', function(e){
     if(e.target.tagName === 'A'){
         e.preventDefault();
@@ -74,7 +71,7 @@ document.querySelector('.hex_navbar').addEventListener('click', function(e){
     }
 });
 
-//close navbar on clicking outside 
+
 document.addEventListener('click', function(event){
     const isClickInsideNav = event.target.closest('.hex_navbar') || 
     event.target.closest('.nav_toggle');
@@ -83,7 +80,6 @@ document.addEventListener('click', function(event){
     }
 })
 
-// HOME SECTION SLIDER
 document.getElementById('next').onclick = function(){
     let lists = document.querySelectorAll('.item');
     document.getElementById('slide').appendChild(lists[0]);
@@ -93,7 +89,7 @@ document.getElementById('prev').onclick = function(){
     document.getElementById('slide').prepend(lists[lists.length - 1]);
 }
 
-// CART FUNCTIONALITY
+
 document.addEventListener('DOMContentLoaded', function(){
     const cartIcon = document.querySelector('.cart_icon');
     const cartSidebar = document.getElementById('cart_sidebar');
@@ -106,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     let cart = [];
 
-    // Function to update cart sidebar
+    
     function updateCart(){
         cartItemsContainer.innerHTML = '';
         let total = 0;
@@ -124,18 +120,18 @@ document.addEventListener('DOMContentLoaded', function(){
         cartCountElement.textContent = cart.length;
     }
 
-    // Function to add item to cart
+    
     function addToCart(item){
         cart.push(item);
         updateCart();
     }
-    // Function to delete item from cart
+  
     function removeFromCart(index){
         cart.splice(index, 1);
         updateCart();
     }
     
-    // Handle add to cart button click
+   
     addToCartButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
             const card = button.closest('.cart_card');
@@ -146,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     });
 
-    // Handle remove button click in cart sidebar
+    
     cartItemsContainer.addEventListener('click', (e) => {
         if (e.target.classList.contains('remove_btn')){
             const index = e.target.dataset.index;
@@ -154,12 +150,11 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
     
-    // Open Cart sidebar
+   
     cartIcon.addEventListener('click', () => {
         cartSidebar.classList.add('open');
     });
 
-    // Close Cart sidebar
     sidebarClose.addEventListener('click', () => {
         cartSidebar.classList.remove('open');
     });
@@ -170,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function(){
     
 });
 
-//TESTIMONIAL SLIDER
+
 let currIndex = 1;
 let istransition = false;
 const sliderTrack= document.querySelector('.testi_track');
